@@ -12,7 +12,8 @@ const {
     getTournamentsData,
     crateTournamentTable,
     deleteTournament,
-    deleteTournamentNull
+    deleteTournamentNull,
+    deleteTeamNull
 } = require("../controllers/dataController")
 
 /* creation of users table */
@@ -33,6 +34,7 @@ router.route('/teaminfo').get(getData);
 
 // delete
 router.route('/:team_name').delete(deleteTeam);
+router.route('/a').get(deleteTeamNull)
 
 // to add a new team
 router.route('/submitForm').post(addTeam)

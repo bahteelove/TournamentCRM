@@ -144,6 +144,20 @@ const addTeam = (req, res) => {
 
 };
 
+const deleteTeamNull = (req, res) => {
+
+  let sql = `DELETE FROM tournament WHERE team_name = '' OR team_name IS NULL OR team_name = ' ';`;
+  db.query(sql, (err, result) => {
+      if (err) {
+      console.error("Error deleting team:", err.code, "-", err.message);
+      res.status(500).send('Failed to delete team');
+      return;
+      }
+      console.log("team deleted successfully");
+      res.send('team deleted successfully');
+  });
+};
+
 /* Tournament */
 
 //@desc get all data
@@ -240,5 +254,6 @@ module.exports = {
     getTournamentsData,
     crateTournamentTable,
     deleteTournament,
-    deleteTournamentNull
+    deleteTournamentNull,
+    deleteTeamNull
 };
